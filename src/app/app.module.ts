@@ -6,10 +6,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 import { LocationStrategy, HashLocationStrategy } from "@angular/common";
+import { HeroDetailsComponent } from './hero-details/hero-details.component';
+import { HeroListComponent } from './hero-list/hero-list.component';
+import { HeroMergingListComponent } from './hero-merging-list/hero-merging-list.component';
+import { MergedHeroComponent } from './merged-hero/merged-hero.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeroDetailsComponent,
+    HeroListComponent,
+    HeroMergingListComponent,
+    MergedHeroComponent
   ],
   imports: [
     BrowserModule,
