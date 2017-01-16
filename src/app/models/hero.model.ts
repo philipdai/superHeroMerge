@@ -8,5 +8,6 @@ export class Hero {
               public gender: Gender = Gender.Male,
               public attributes: Attributes = new Attributes(),
               public powers: string[] = [],
-              public weaknesses: string[] = []) {}
+              public weaknesses: string[] = [],
+              public selected: boolean = false) {}
 }
