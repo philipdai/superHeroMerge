@@ -1,0 +1,44 @@
+{
+  "stocks": [
+    {
+      "stockName": "International Business Machines",
+      "stockCode": "IBM",
+      "id": 1
+    },
+    {
+      "stockName": "Hewlett Packard Inc",
+      "stockCode": "HP",
+      "id": 4
+    },
+    {
+      "stockName": "Tesla Inc",
+      "stockCode": "TSLA",
+      "id": 5
+    },
+    {
+      "stockName": "Apple Computers",
+      "stockCode": "APPL",
+      "id": 6
+    },
+    {
+      "stockName": "Google",
+      "stockCode": "GOOG",
+      "id": 7
+    },
+    {
+      "stockName": "British Broadcast Company",
+      "stockCode": "BBC",
+      "id": 9
+    },
+    {
+      "stockName": "American Advisor",
+      "stockCode": "AA",
+      "id": 12
+    },
+    {
+      "stockName": "Waqas Big Boss",
+      "stockCode": "WBB",
+      "id": 13
+    }
+  ]
+}
