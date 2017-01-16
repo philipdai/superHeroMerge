@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-merged-hero',
+  selector: 'merged-hero',
   templateUrl: './merged-hero.component.html',
   styleUrls: ['./merged-hero.component.css']
 })

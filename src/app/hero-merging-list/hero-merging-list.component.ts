@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-hero-merging-list',
+  selector: 'hero-merging-list',
   templateUrl: './hero-merging-list.component.html',
   styleUrls: ['./hero-merging-list.component.css']
 })

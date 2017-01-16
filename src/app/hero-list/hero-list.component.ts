@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Hero } from '../models/hero.model';
 
 @Component({
-  selector: 'app-hero-list',
+  selector: 'hero-list',
   templateUrl: './hero-list.component.html',
   styleUrls: ['./hero-list.component.css']
 })
 export class HeroListComponent implements OnInit {
+  heroList: Hero[] = [];
 
   constructor() { }
 
