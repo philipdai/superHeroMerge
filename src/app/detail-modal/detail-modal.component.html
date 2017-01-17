@@ -1,0 +1,63 @@
+<div class="modal fade bd-example-modal-lg" id="detailModal"
+     tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title mt-2">Hero Details</h3>
+        <button type="button" class="close" data-dismiss="modal"
+                (click)="cancel();" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form novalidate #heroDetailForm="ngForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="heroName">Hero Name</label>
+            <input type="text" id="heroName" name="heroName" class="form-control"
+                   [(ngModel)]="detailedHero.hero_name" placeholder="Hero Name"
+                   #heroName="ngModel" required>
+            <ngb-alert [type]="'danger'"
+                       [hidden]="heroName.valid || heroName.pristine">
+              Hero's name can't be empty
+            </ngb-alert>
+          </div>
+          <div class="form-group">
+            <label for="heroRealName">Stock Code:</label>
+            <input type="text" id="heroRealName" name="heroRealName" class="form-control"
+                   [(ngModel)]="detailedHero.real_name" placeholder="Real Name"
+                   #heroRealName="ngModel" required/>
+            <ngb-alert [type]="'danger'"
+                       [hidden]="heroRealName.valid || heroRealName.pristine">
+              Real name can't be empty
+            </ngb-alert>
+          </div>
+          <div class="form-group">
+            <label for="heroGender">Gender:</label>
+            <div [(ngModel)]="detailedHero.gender" ngbRadioGroup name="heroGender" id="heroGender">
+              <label class="btn btn-primary">
+                <input type="radio" [value]="'Male'"> Male
+              </label>
+              <label class="btn btn-primary">
+                <input type="radio" [value]="'Female'"> Female
+              </label>
+            </div>
+            <!--<select type="text" id="heroGender" name="heroGender" class="form-control"-->
+                   <!--[(ngModel)]="hero.gender" #heroGender="ngModel">-->
+              <!--<option value="Male">Male</option>-->
+              <!--<option value="Female">Female</option>-->
+            <!--</select>-->
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                (click)="cancel();">Close</button>
+        <button type="submit" class="btn btn-primary"
+                (click)="createHero(hero);"
+                [disabled]="!heroDetailForm.form.valid"
+                data-dismiss="modal">Update Hero</button>
+      </div>
+    </div>
+  </div>
+</div>

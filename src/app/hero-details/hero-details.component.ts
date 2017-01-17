@@ -8,17 +8,34 @@ import {Hero} from "../models/hero.model";
 })
 export class HeroDetailsComponent implements OnInit {
   @Input() hero: Hero;
-
   @Input() i: number;
+  isShowHero: boolean = false;
+  isUpdateHero: boolean = false;
+  selectedHero: Hero;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  showDetails() {}
+  showDetails(hero: Hero) {
+    console.log('hero: ', hero);
+    this.selectedHero = hero;
+    console.log('selectedHero: ', this.selectedHero);
+    this.isShowHero = true;
+  }
 
-  loadDetails() {}
+  loadDetails(hero: Hero) {
+    this.isUpdateHero = true;
+  }
 
   selectToMerge() {}
+
+  cancelInitialDetailModal() {
+
+    this.isShowHero = false;
+    this.isUpdateHero = false;
+  }
+
+  onSubmit() {}
 }
