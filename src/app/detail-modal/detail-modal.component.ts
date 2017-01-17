@@ -9,6 +9,10 @@ import {Hero} from "../models/hero.model";
 })
 export class DetailModalComponent implements OnInit {
   @Input() detailedHero: Hero;
+  @Input() isShowing: boolean = false;
+  @Input() isEditing: boolean = false;
+  @Input() isMerging: boolean = false;
+
   onCreateHero: EventEmitter<Hero>;
   onCancel: EventEmitter<any>;
   submitted: boolean = false;
@@ -16,6 +20,9 @@ export class DetailModalComponent implements OnInit {
   constructor() {
     this.onCreateHero = new EventEmitter();
     this.onCancel = new EventEmitter();
+    this.isShowing = false;
+    this.isEditing = false;
+    this.isMerging = false;
   }
 
   ngOnInit() {

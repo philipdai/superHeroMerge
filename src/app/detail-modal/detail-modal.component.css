@@ -1,0 +1,20 @@
+.tag-success {
+    background-color: #5cb85c;
+}
+
+.tag-danger {
+    background-color: #d9534f;
+}
+
+.tag {
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+}

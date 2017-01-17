@@ -10,7 +10,7 @@ export class HeroDetailsComponent implements OnInit {
   @Input() hero: Hero;
   @Input() i: number;
   isShowHero: boolean = false;
-  isUpdateHero: boolean = false;
+  isEditHero: boolean = false;
   selectedHero: Hero;
 
   constructor() { }
@@ -19,22 +19,20 @@ export class HeroDetailsComponent implements OnInit {
   }
 
   showDetails(hero: Hero) {
-    console.log('hero: ', hero);
     this.selectedHero = hero;
-    console.log('selectedHero: ', this.selectedHero);
     this.isShowHero = true;
   }
 
-  loadDetails(hero: Hero) {
-    this.isUpdateHero = true;
+  editDetails(hero: Hero) {
+    this.selectedHero = hero;
+    this.isEditHero = true;
   }
 
   selectToMerge() {}
 
   cancelInitialDetailModal() {
-
     this.isShowHero = false;
-    this.isUpdateHero = false;
+    this.isEditHero = false;
   }
 
   onSubmit() {}

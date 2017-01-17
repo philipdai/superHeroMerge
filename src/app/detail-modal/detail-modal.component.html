@@ -15,17 +15,17 @@
             <label for="heroName">Hero Name</label>
             <input type="text" id="heroName" name="heroName" class="form-control"
                    [(ngModel)]="detailedHero.hero_name" placeholder="Hero Name"
-                   #heroName="ngModel" required>
+                   #heroName="ngModel" [disabled]="isShowing" required>
             <ngb-alert [type]="'danger'"
                        [hidden]="heroName.valid || heroName.pristine">
               Hero's name can't be empty
             </ngb-alert>
           </div>
           <div class="form-group">
-            <label for="heroRealName">Stock Code:</label>
+            <label for="heroRealName">Real Name:</label>
             <input type="text" id="heroRealName" name="heroRealName" class="form-control"
                    [(ngModel)]="detailedHero.real_name" placeholder="Real Name"
-                   #heroRealName="ngModel" required/>
+                   #heroRealName="ngModel" [disabled]="isShowing" required/>
             <ngb-alert [type]="'danger'"
                        [hidden]="heroRealName.valid || heroRealName.pristine">
               Real name can't be empty
@@ -33,7 +33,7 @@
           </div>
           <div class="form-group">
             <label for="heroGender">Gender:</label>
-            <div [(ngModel)]="detailedHero.gender" ngbRadioGroup name="heroGender" id="heroGender">
+            <div [(ngModel)]="detailedHero.gender" ngbRadioGroup name="heroGender" id="heroGender" [disabled]="isShowing">
               <label class="btn btn-primary">
                 <input type="radio" [value]="'Male'"> Male
               </label>
@@ -41,11 +41,58 @@
                 <input type="radio" [value]="'Female'"> Female
               </label>
             </div>
-            <!--<select type="text" id="heroGender" name="heroGender" class="form-control"-->
-                   <!--[(ngModel)]="hero.gender" #heroGender="ngModel">-->
-              <!--<option value="Male">Male</option>-->
-              <!--<option value="Female">Female</option>-->
-            <!--</select>-->
+          </div>
+          <div class="form-group">
+            <label for="intelligence">Intelligence: </label>
+            <input type="number" id="intelligence" name="intelligence" class="mr-1" [disabled]="isShowing"
+                   [(ngModel)]="detailedHero.attributes.intelligence" style="width: 3em;"/>
+            <label for="strength">Strength: </label>
+            <input type="number" id="strength" name="strength" class="mr-1" [disabled]="isShowing"
+                   [(ngModel)]="detailedHero.attributes.strength" style="width: 3em;"/>
+            <label for="speed">Speed: </label>
+            <input type="number" id="speed" name="speed" class="mr-1" [disabled]="isShowing"
+                   [(ngModel)]="detailedHero.attributes.speed" style="width: 3em;"/>
+            <label for="durability">Durability: </label>
+            <input type="number" id="durability" name="durability" class="mr-1" [disabled]="isShowing"
+                   [(ngModel)]="detailedHero.attributes.durability" style="width: 3em;"/>
+            <label for="power">Power: </label>
+            <input type="number" id="power" name="power" class="mr-1" [disabled]="isShowing"
+                   [(ngModel)]="detailedHero.attributes.power" style="width: 3em;"/>
+            <label for="combat">Combat: </label>
+            <input type="number" id="combat" name="combat" class="mr-1" [disabled]="isShowing"
+                   [(ngModel)]="detailedHero.attributes.combat" style="width: 3em;"/>
+          </div>
+          <div class="form-group" *ngIf="isShowing">
+            <label>Powers: </label>
+            <span class="tag tag-success mr-1 ml-1"
+                  *ngFor="let power of detailedHero.powers">
+              {{power}}
+            </span>
+          </div>
+          <div class="form-group" *ngIf="detailedHero.weaknesses.length > 0 && isShowing">
+            <label>Weaknesses: </label>
+            <span class="tag tag-danger mr-1"
+                  *ngFor="let weakness of detailedHero.weaknesses">
+              {{weakness}}
+            </span>
+          </div>
+
+          <div class="form-group" *ngIf="isEditing">
+            <label>Powers: </label>
+            <span class="tag tag-success mr-1 ml-1"
+                  *ngFor="let power of detailedHero.powers">
+              {{power}}
+            </span>
+          </div>
+
+          <div class="form-group" *ngIf="detailedHero.weaknesses.length > 0 && isEditing">
+            <label>Weaknesses: </label>
+            <span class="mr-1"
+                  *ngFor="let weakness of detailedHero.weaknesses; let i=index;">
+              {{weakness}}
+              <!--<input type="text" [(ngModel)]="detailedHero.weaknesses[i]" />-->
+            </span>
+
           </div>
         </form>
 
@@ -56,7 +103,8 @@
         <button type="submit" class="btn btn-primary"
                 (click)="createHero(hero);"
                 [disabled]="!heroDetailForm.form.valid"
-                data-dismiss="modal">Update Hero</button>
+                data-dismiss="modal"
+                *ngIf="isEditing">Update Hero</button>
       </div>
     </div>
   </div>
