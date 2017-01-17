@@ -1,3 +1,15 @@
-<p>
-  hero-details works!
-</p>
+<div class="card ml-2 mr-2 mt-2 mb-2 float-left" style="width: 20rem; height: 10em;">
+  <div class="card-block">
+    <h4 class="card-title">{{hero.hero_name}}</h4>
+    <a (click)="showDetails(hero)" class="btn btn-warning mb-2">Details</a>
+    <a (click)="loadDetails(hero)" class="btn btn-warning mb-2">Update</a>
+    <a (click)="selectToMerge(hero)" class="btn btn-primary mb-2">Merge</a>
+    <div class="card-text">
+      <p>{{hero.real_name}}</p>
+      <!--<p>Gender: {{hero.gender}}</p>-->
+      <!--<p>{{hero.attributes | json}}</p>-->
+      <!--<p>POWERS: {{hero.powers | json}}</p>-->
+      <!--<p>WEAKNESSES: {{hero.weaknesses | json}}</p>-->
+    </div>
+  </div>
+</div>

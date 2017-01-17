@@ -1,3 +1,7 @@
-<p>
-  hero-list works!
-</p>
+<div class="m-auto">
+  <hero-details *ngFor="let hero of heroList; let i=index;"
+                [hero]="hero" [i]="i"></hero-details>
+
+</div>
+<div class="container">
+</div>

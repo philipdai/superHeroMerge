@@ -10,6 +10,7 @@ import { HeroDetailsComponent } from './hero-details/hero-details.component';
 import { HeroListComponent } from './hero-list/hero-list.component';
 import { HeroMergingListComponent } from './hero-merging-list/hero-merging-list.component';
 import { MergedHeroComponent } from './merged-hero/merged-hero.component';
+import { ServicesModule } from './services/services.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MergedHeroComponent } from './merged-hero/merged-hero.component';
     FormsModule,
     HttpModule,
     routing,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    ServicesModule
   ],
   providers: [
     {
