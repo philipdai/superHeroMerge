@@ -1,21 +1,23 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import {Hero} from "../models/hero.model";
 
 @Component({
   selector: 'hero-details',
   templateUrl: './hero-details.component.html',
-  styleUrls: ['./hero-details.component.css']
+  styleUrls: ['./hero-details.component.css'],
+  outputs: ['onToggledHero']
 })
 export class HeroDetailsComponent implements OnInit {
   @Input() hero: Hero;
   @Input() i: number;
+  @Input() mergingList: Hero[] = [];
   isShowHero: boolean = false;
   isEditHero: boolean = false;
-  selectedHero: any;
+  selectedHero: Hero = null;
+  onToggledHero: EventEmitter<Hero>;
 
   constructor() {
-
-
+    this.onToggledHero = new EventEmitter();
   }
 
   ngOnInit() {
@@ -31,7 +33,17 @@ export class HeroDetailsComponent implements OnInit {
     this.isEditHero = true;
   }
 
-  selectToMerge() {}
+  toggleSelectToMerge(hero: Hero) {
+    this.selectedHero = hero;
+
+    if (this.selectedHero.selected === true ) {
+      this.selectedHero.selected = false;
+    } else {
+      this.selectedHero.selected =true;
+    }
+
+    this.onToggledHero.emit(this.selectedHero);
+  }
 
   cancelInitialDetailModal() {
     this.isShowHero = false;

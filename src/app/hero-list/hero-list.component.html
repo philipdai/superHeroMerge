@@ -1,6 +1,11 @@
 <div class="m-auto">
   <hero-details *ngFor="let hero of heroList; let i=index;"
-                [hero]="hero" [i]="i"></hero-details>
+                [hero]="hero" [i]="i"
+                [mergingList]="selectedToMergeHeroes"
+                (onToggledHero)="updateHeroList($event)"></hero-details>
+
+  <merging-modal [mergingList]="selectedToMergeHeroes"
+                 [isShowMergingModal]="isShowMergingModal"></merging-modal>
 
 </div>
 <div class="container">

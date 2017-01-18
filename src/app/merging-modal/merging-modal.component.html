@@ -1,0 +1,128 @@
+<div class="modal fade" id="mergingModal"
+     tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+     aria-hidden="true" *ngIf="mergingList.length === 2">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title mt-2">Merging Heroes</h3>
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="overflow-y: auto;">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col container container-fluid">
+              <form>
+                <div class="row">
+                  <div class="col" *ngFor="let hero of mergingList; let i=index;">
+                    <div class="row">
+                      <div class="col">{{hero.hero_name}} | {{hero.real_name}} | {{hero.gender}}</div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <fieldset class="form-group row">
+                          <legend class="col-form-legend col-sm-2">Attributes</legend>
+                          <div class="col">
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input class="form-check-input"
+                                       type="radio"
+                                       name="intelligenceRadios"
+                                       id="intelligenceRadio{{i}}" value="{{hero.attributes.intelligence}}">
+                                Intelligence: {{hero.attributes.intelligence}}
+                              </label>
+                            </div>
+
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input class="form-check-input"
+                                       type="radio"
+                                       name="strengthRadios"
+                                       id="strengthRadio{{i}}" value="{{hero.attributes.strength}}">
+                                Strength: {{hero.attributes.strength}}
+                              </label>
+                            </div>
+
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input class="form-check-input"
+                                       type="radio"
+                                       name="speedRadios"
+                                       id="speedRadio{{i}}" value="{{hero.attributes.speed}}">
+                                Speed: {{hero.attributes.speed}}
+                              </label>
+                            </div>
+
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input class="form-check-input"
+                                       type="radio"
+                                       name="intelligenceRadios"
+                                       id="durabilityRadio{{i}}" value="{{hero.attributes.durability}}">
+                                Durability: {{hero.attributes.durability}}
+                              </label>
+                            </div>
+
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input class="form-check-input"
+                                       type="radio"
+                                       name="powerRadios"
+                                       id="powerRadio{{i}}" value="{{hero.attributes.power}}">
+                                Power: {{hero.attributes.power}}
+                              </label>
+                            </div>
+
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input class="form-check-input"
+                                       type="radio"
+                                       name="intelligenceRadios"
+                                       id="combatRadio{{i}}" value="{{hero.attributes.combat}}">
+                                Combat: {{hero.attributes.combat}}
+                              </label>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col">
+                        <div style="color: #5cb85c;">Powers:</div>
+                        <div class="form-check form-check-inline" *ngFor="let power of hero.powers; let j=index;">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" id="powerCheckbox-{{i}}-{{j}}" value="{{power}}">
+                            <span class="tab tab-success" style="color: #5cb85c;">{{power}}</span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col">
+                        <div style="color: #d9534f;">Weaknesses:</div>
+                        <div class="form-check-inline" *ngFor="let weakness of hero.weaknesses; let j=index;">
+                          <span style="color: #d9534f;">{{weakness}}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                >Close</button>
+        <button type="submit" class="btn btn-primary"
+                data-dismiss="modal"
+                *ngIf="isEditing">Update Hero</button>
+      </div>
+    </div>
+  </div>
+</div>

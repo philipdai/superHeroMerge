@@ -5,9 +5,15 @@
        data-toggle="modal" data-target="#detailModal">Details</a>
     <a (click)="editDetails(hero)" class="btn btn-warning mb-1"
        data-toggle="modal" data-target="#detailModal">Update</a>
-    <a (click)="selectToMerge(hero)" class="btn btn-primary mb-1">Merge</a>
+    <button (click)="toggleSelectToMerge(hero)" class="btn mb-1"
+       [ngClass]="{
+         'btn-danger': hero.selected,
+         'btn-primary': !hero.selected
+         }"
+       [disabled]="((mergingList.length === 2) && !hero.selected)"
+       name="hero-{{hero.id}}" data-toggle="modal" data-target="#mergingModal">Merge</button>
     <div class="card-text">
-      <p>{{hero.real_name}}</p>
+      <p>{{hero.real_name}} {{hero.selected}}</p>
     </div>
   </div>
 </div>

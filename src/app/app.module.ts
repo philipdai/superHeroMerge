@@ -12,6 +12,7 @@ import { HeroMergingListComponent } from './hero-merging-list/hero-merging-list.
 import { MergedHeroComponent } from './merged-hero/merged-hero.component';
 import { ServicesModule } from './services/services.module';
 import { DetailModalComponent } from './detail-modal/detail-modal.component';
+import { MergingModalComponent } from './merging-modal/merging-modal.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DetailModalComponent } from './detail-modal/detail-modal.component';
     HeroListComponent,
     HeroMergingListComponent,
     MergedHeroComponent,
-    DetailModalComponent
+    DetailModalComponent,
+    MergingModalComponent
   ],
   imports: [
     BrowserModule,

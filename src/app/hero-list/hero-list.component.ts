@@ -9,9 +9,12 @@ import {HeroService} from "../services/hero.service";
 })
 export class HeroListComponent implements OnInit {
   heroList: Hero[] = [];
-  // amountRows: number = 0;
+  selectedToMergeHeroes: Hero[] = [];
+  isShowMergingModal: boolean = false;
 
-  constructor(private heroService: HeroService) { }
+  constructor(private heroService: HeroService) {
+
+  }
 
   ngOnInit() {
     this.heroService.loadAll();
@@ -24,13 +27,30 @@ export class HeroListComponent implements OnInit {
       .subscribe(
         (data) => {
           this.heroList = data;
-          // this.amountRows = Math.ceil(this.heroList.length / 5);
-          // console.log('amountRows: ', this.amountRows);
+          this.heroList.forEach((hero) => hero.selected = false);
         },
         (error) => {
           console.log('Server Error')
         }
       );
+  }
+
+  updateHeroList(event) {
+    let len = this.selectedToMergeHeroes.length;
+
+    if (len > 1 && event.selected) {
+
+    } else {
+      if (!event.selected) {
+        this.selectedToMergeHeroes = this.selectedToMergeHeroes.filter(hero => hero.id !== event.id);
+      } else {
+        this.selectedToMergeHeroes.push(event);
+      }
+    }
+
+    if (this.selectedToMergeHeroes.length === 2) {
+      this.isShowMergingModal = true;
+    }
   }
 
 }
