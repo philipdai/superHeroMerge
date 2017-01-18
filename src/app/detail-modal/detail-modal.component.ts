@@ -25,6 +25,10 @@ export class DetailModalComponent implements OnInit {
     this.isMerging = false;
   }
 
+  customTrackBy(index: number, obj: any): any {
+    return index;
+  }
+
   ngOnInit() {
 
   }

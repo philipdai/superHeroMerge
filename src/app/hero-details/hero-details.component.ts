@@ -11,9 +11,12 @@ export class HeroDetailsComponent implements OnInit {
   @Input() i: number;
   isShowHero: boolean = false;
   isEditHero: boolean = false;
-  selectedHero: Hero;
+  selectedHero: any;
 
-  constructor() { }
+  constructor() {
+
+
+  }
 
   ngOnInit() {
   }

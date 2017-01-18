@@ -62,37 +62,22 @@
             <input type="number" id="combat" name="combat" class="mr-1" [disabled]="isShowing"
                    [(ngModel)]="detailedHero.attributes.combat" style="width: 3em;"/>
           </div>
-          <div class="form-group" *ngIf="isShowing">
+          <div class="form-group" *ngIf="detailedHero.powers.length > 0 && (isEditing || isShowing)">
             <label>Powers: </label>
-            <span class="tag tag-success mr-1 ml-1"
-                  *ngFor="let power of detailedHero.powers">
-              {{power}}
-            </span>
+            <input class="tag tag-success mr-1"
+                   *ngFor="let power of detailedHero.powers; let i = index;"
+                   name="power-{{i}}"
+                   type="text" [(ngModel)]="detailedHero.powers[i]"
+                   [disabled]="isShowing"/>
           </div>
-          <div class="form-group" *ngIf="detailedHero.weaknesses.length > 0 && isShowing">
+
+          <div class="form-group" *ngIf="detailedHero.weaknesses.length > 0 && (isEditing || isShowing)">
             <label>Weaknesses: </label>
-            <span class="tag tag-danger mr-1"
-                  *ngFor="let weakness of detailedHero.weaknesses">
-              {{weakness}}
-            </span>
-          </div>
-
-          <div class="form-group" *ngIf="isEditing">
-            <label>Powers: </label>
-            <span class="tag tag-success mr-1 ml-1"
-                  *ngFor="let power of detailedHero.powers">
-              {{power}}
-            </span>
-          </div>
-
-          <div class="form-group" *ngIf="detailedHero.weaknesses.length > 0 && isEditing">
-            <label>Weaknesses: </label>
-            <span class="mr-1"
-                  *ngFor="let weakness of detailedHero.weaknesses; let i=index;">
-              {{weakness}}
-              <!--<input type="text" [(ngModel)]="detailedHero.weaknesses[i]" />-->
-            </span>
-
+            <input class="tag tag-danger mr-1"
+                   *ngFor="let weakness of detailedHero.weaknesses; let i = index;"
+                   name="weakness-{{i}}"
+                   type="text" [(ngModel)]="detailedHero.weaknesses[i]"
+                   [disabled]="isShowing"/>
           </div>
         </form>
 
