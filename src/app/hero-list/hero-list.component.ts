@@ -18,12 +18,25 @@ export class HeroListComponent implements OnInit {
 
   ngOnInit() {
     this.heroService.loadAll();
-    this.getHeroList();
+    this.getInitialHeroList();
 
   }
 
-  getHeroList() {
+  getInitialHeroList() {
     this.heroService.heroList
+      .subscribe(
+        (data) => {
+          this.heroList = data;
+          this.heroList.forEach((hero) => hero.selected = false);
+        },
+        (error) => {
+          console.log('Server Error')
+        }
+      );
+  }
+
+  getHeroList() {
+    this.heroService.getHerosAPI()
       .subscribe(
         (data) => {
           this.heroList = data;
@@ -54,11 +67,12 @@ export class HeroListComponent implements OnInit {
   }
 
   createHero(event: Hero) {
-    console.log("event: ", event);
     let newHero: Hero = event;
     delete newHero.selected;
-    console.log('newHero: ', newHero);
-
+    this.heroService.createHero(newHero).subscribe(data => {
+      this.getHeroList();
+    });
+    this.selectedToMergeHeroes = [];
   }
 
 }

@@ -42,7 +42,6 @@ export class HeroService {
         }).subscribe(
         (res) => {
           this.dataStore.heroList = res;
-          // console.log("res: ", res);
           this._heroList.next(Object.assign({}, this.dataStore).heroList);
         },
         (error) => {
@@ -61,13 +60,8 @@ export class HeroService {
 
 
   createHero(newHero: Hero): Observable<any> {
-    return this.http.post("https://hero-merge.herokuapp.com/" + this.apiKey + "/heroes", {
-      hero_name: newHero.hero_name,
-      real_name: newHero.real_name,
-      gender: newHero.gender,
-      attributes: newHero.attributes,
-      powers: newHero.powers,
-      weaknesses: newHero.weaknesses});
+    delete newHero.id;
+    return this.http.post("https://hero-merge.herokuapp.com/" + this.apiKey + "/heroes", newHero);
   }
 
   updateHero(updatedHero: Hero): Observable<any> {
