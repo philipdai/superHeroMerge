@@ -67,12 +67,14 @@ export class HeroListComponent implements OnInit {
   }
 
   createHero(event: Hero) {
+    this.isShowMergingModal = false;
+    this.selectedToMergeHeroes = [];
     let newHero: Hero = event;
     delete newHero.selected;
     this.heroService.createHero(newHero).subscribe(data => {
       this.getHeroList();
     });
-    this.selectedToMergeHeroes = [];
+
   }
 
 }

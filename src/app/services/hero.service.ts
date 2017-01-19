@@ -52,7 +52,6 @@ export class HeroService {
   }
 
   getHerosAPI(): Observable<any> {
-    console.log('this.apiKey: ', this.apiKey);
     return this.http.get("https://hero-merge.herokuapp.com/" + this.apiKey + "/heroes")
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server Error!'));
