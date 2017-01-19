@@ -3,8 +3,8 @@
     <h4 class="card-title">{{hero.hero_name}}</h4>
     <a (click)="showDetails(hero)" class="btn btn-info mb-1"
        data-toggle="modal" data-target="#detailModal">Details</a>
-    <a (click)="editDetails(hero)" class="btn btn-warning mb-1"
-       data-toggle="modal" data-target="#detailModal">Update</a>
+    <!--<a (click)="editDetails(hero)" class="btn btn-warning mb-1"-->
+       <!--data-toggle="modal" data-target="#detailModal">Update</a>-->
     <button (click)="toggleSelectToMerge(hero)" class="btn mb-1"
        [ngClass]="{
          'btn-danger': hero.selected,
