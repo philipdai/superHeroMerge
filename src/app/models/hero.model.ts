@@ -5,7 +5,7 @@ export class Hero {
   constructor(public id: number = -1,
               public hero_name: string = "",
               public real_name: string = "",
-              public gender: Gender = Gender.Male,
+              public gender: string = Gender[Gender.Male],
               public attributes: Attributes = new Attributes(),
               public powers: string[] = [],
               public weaknesses: string[] = [],

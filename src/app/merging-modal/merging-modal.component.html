@@ -14,7 +14,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col container container-fluid">
-              <form>
+              <form ngForm>
                 <div class="row">
                   <div class="col" *ngFor="let hero of mergingList; let i=index;">
                     <div class="row">
@@ -127,23 +127,34 @@
                     <div class="form-inline">
                       <div class="form-group mr-2">
                         Hero Name:
-                        <input type="text" class="form-control ml-1" id="mergedHeroName" placeholder="Merged Hero Name">
+                        <input type="text" class="form-control ml-1"
+                               id="mergedHeroName" placeholder="Merged Hero Name"
+                               name="hero_name"
+                               [(ngModel)]="newHero.hero_name"/>
                       </div>
 
                       <div class="form-group mr-2">
                         Real Name:
-                        <input type="text" class="form-control ml-1" id="mergedRealName" placeholder="Merged Real Name">
+                        <input type="text" class="form-control ml-1"
+                               id="mergedRealName" placeholder="Merged Real Name"
+                               name="real_name"
+                               [(ngModel)]="newHero.real_name">
                       </div>
 
                       <div class="form-group mr-2 mt-2">
                         Gender:
                         <label class="btn btn-primary mr-1 ml-1">
-                          <input type="radio" [value]="'Male'" class="p-2 mr-2" name="gender"> Male
+                          <input type="radio"
+                                 class="p-2 mr-2" name="gender"
+                                 [(ngModel)]="newHero.gender"  value="Male"> Male
                         </label>
                         <label class="btn btn-primary mr-1">
-                          <input type="radio" [value]="'Female'" class="p-2 mr-2" name="gender"> Female
+                          <input type="radio"
+                                 class="p-2 mr-2" name="gender"
+                                 [(ngModel)]="newHero.gender"  value="Female"> Female
                         </label>
                       </div>
+
                     </div>
                   </div>
                 </div>
@@ -157,7 +168,7 @@
                 >Close</button>
         <button type="submit" class="btn btn-primary"
                 data-dismiss="modal"
-                >Merge</button>
+                (click)="generateMergedHero()">Merge</button>
       </div>
     </div>
   </div>
