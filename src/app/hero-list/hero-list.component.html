@@ -5,7 +5,8 @@
                 (onToggledHero)="updateHeroList($event)"></hero-details>
 
   <merging-modal [mergingList]="selectedToMergeHeroes"
-                 [isShowMergingModal]="isShowMergingModal"></merging-modal>
+                 [isShowMergingModal]="isShowMergingModal"
+                 (onGenerateMergedHero)="createHero($event)"></merging-modal>
 
 </div>
 <div class="container">

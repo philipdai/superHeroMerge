@@ -53,4 +53,12 @@ export class HeroListComponent implements OnInit {
     }
   }
 
+  createHero(event: Hero) {
+    console.log("event: ", event);
+    let newHero: Hero = event;
+    delete newHero.selected;
+    console.log('newHero: ', newHero);
+
+  }
+
 }
