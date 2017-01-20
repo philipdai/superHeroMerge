@@ -36,6 +36,7 @@ export class HeroListComponent implements OnInit {
   }
 
   getHeroList() {
+    this.selectedToMergeHeroes = [];
     this.heroService.getHerosAPI()
       .subscribe(
         (data) => {
@@ -74,7 +75,6 @@ export class HeroListComponent implements OnInit {
     this.heroService.createHero(newHero).subscribe(data => {
       this.getHeroList();
     });
-
   }
 
 }

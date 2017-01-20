@@ -5,7 +5,7 @@ import {Hero} from "../models/hero.model";
   selector: 'hero-details',
   templateUrl: './hero-details.component.html',
   styleUrls: ['./hero-details.component.css'],
-  outputs: ['onToggledHero']
+  outputs: ['onToggledHero', 'onCancel']
 })
 export class HeroDetailsComponent implements OnInit {
   @Input() hero: Hero;
@@ -15,9 +15,11 @@ export class HeroDetailsComponent implements OnInit {
   isEditHero: boolean = false;
   selectedHero: Hero = null;
   onToggledHero: EventEmitter<Hero>;
+  onCancel: EventEmitter<boolean>;
 
   constructor() {
     this.onToggledHero = new EventEmitter();
+    this.onCancel = new EventEmitter();
   }
 
   ngOnInit() {
@@ -48,6 +50,7 @@ export class HeroDetailsComponent implements OnInit {
   cancelInitialDetailModal() {
     this.isShowHero = false;
     this.isEditHero = false;
+    this.onCancel.emit(false);
   }
 
   onSubmit() {}

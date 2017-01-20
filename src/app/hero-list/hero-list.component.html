@@ -2,11 +2,13 @@
   <hero-details *ngFor="let hero of heroList; let i=index;"
                 [hero]="hero" [i]="i"
                 [mergingList]="selectedToMergeHeroes"
-                (onToggledHero)="updateHeroList($event)"></hero-details>
+                (onToggledHero)="updateHeroList($event)"
+                (onCancel)="getHeroList()"></hero-details>
 
   <merging-modal *ngIf="isShowMergingModal" [mergingList]="selectedToMergeHeroes"
                  [isShowMergingModal]="isShowMergingModal"
-                 (onGenerateMergedHero)="createHero($event)"></merging-modal>
+                 (onGenerateMergedHero)="createHero($event)"
+                 (onCancel)="getHeroList()"></merging-modal>
 
 </div>
 <div class="container">

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import {Hero} from "../models/hero.model";
-
+declare let _;
 @Component({
   selector: 'detail-modal',
   templateUrl: './detail-modal.component.html',
@@ -14,7 +14,7 @@ export class DetailModalComponent implements OnInit {
   @Input() isMerging: boolean = false;
 
   onCreateHero: EventEmitter<Hero>;
-  onCancel: EventEmitter<any>;
+  onCancel: EventEmitter<boolean>;
   submitted: boolean = false;
 
   constructor() {
@@ -23,6 +23,7 @@ export class DetailModalComponent implements OnInit {
     this.isShowing = false;
     this.isEditing = false;
     this.isMerging = false;
+
   }
 
   customTrackBy(index: number, obj: any): any {
@@ -30,12 +31,13 @@ export class DetailModalComponent implements OnInit {
   }
 
   ngOnInit() {
-
   }
 
   cancel() {
+    this.isShowing = false;
+    this.isEditing = false;
     this.submitted = false;
-    this.onCancel.emit({cancel: true});
+    this.onCancel.emit(false);
   }
 
   createHero(hero: Hero) {

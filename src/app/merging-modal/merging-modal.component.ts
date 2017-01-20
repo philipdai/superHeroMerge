@@ -6,18 +6,20 @@ declare let _:any;
   selector: 'merging-modal',
   templateUrl: './merging-modal.component.html',
   styleUrls: ['./merging-modal.component.css'],
-  outputs: ['onGenerateMergedHero']
+  outputs: ['onGenerateMergedHero', 'onCancel']
 })
 export class MergingModalComponent implements OnInit {
   @Input() mergingList: Hero[];
   @Input() isShowMergingModal: boolean = false;
   onGenerateMergedHero: EventEmitter<Hero>;
+  onCancel: EventEmitter<boolean>;
 
   newHero: Hero;
 
   constructor() {
     this.newHero = new Hero();
     this.onGenerateMergedHero = new EventEmitter();
+    this.onCancel = new EventEmitter();
   }
 
   generateMergedHero() {
@@ -41,6 +43,11 @@ export class MergingModalComponent implements OnInit {
   disablePowerCheckbox(power) {
     let uniquePowers = _.uniq(this.newHero.powers);
     return (uniquePowers.length >= 5) && (this.newHero.powers.indexOf(power) === -1);
+  }
+
+  cancel() {
+    this.isShowMergingModal = false;
+    this.onCancel.emit(false);
   }
 
   ngOnInit() {

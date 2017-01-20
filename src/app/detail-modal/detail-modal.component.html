@@ -10,7 +10,8 @@
         </button>
       </div>
       <div class="modal-body">
-        <form novalidate #heroDetailForm="ngForm" (ngSubmit)="onSubmit()">
+        <form novalidate #heroDetailForm="ngForm"
+              (ngSubmit)="onSubmit()" >
           <div class="form-group">
             <label for="heroName">Hero Name</label>
             <input type="text" id="heroName" name="heroName" class="form-control"
