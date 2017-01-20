@@ -14,7 +14,6 @@ export class HeroService {
   };
   private baseUrl: string;
   private baseApiUrl: string;
-  private _apiKey: BehaviorSubject<string>;
   private apiKey: string;
 
   constructor(private http: Http) {
@@ -22,7 +21,6 @@ export class HeroService {
     this.baseApiUrl = "https://hero-merge.herokuapp.com/getApiKey";
     this.dataStore = { heroList: []};
     this._heroList = <BehaviorSubject<Hero[]>> new BehaviorSubject([]);
-    this._apiKey = <BehaviorSubject<string>> new BehaviorSubject('');
     this.apiKey = "";
   }
 
@@ -35,7 +33,6 @@ export class HeroService {
       return res.json()
     }).subscribe(data => {
       this.apiKey = data.apiKey;
-      this._apiKey.next(Object.assign({}, this.apiKey));
       this.http.get(`${this.baseUrl}${data.apiKey}/heroes`)
         .map((res: Response) => {
           return res.json();

@@ -34,12 +34,20 @@
           </div>
           <div class="form-group">
             <label for="heroGender">Gender:</label>
-            <div [(ngModel)]="detailedHero.gender" ngbRadioGroup name="heroGender" id="heroGender" [disabled]="isShowing">
+            <div id="heroGender">
               <label class="btn btn-primary">
-                <input type="radio" [value]="'Male'"> Male
+                <input type="radio"
+                       [value]="'Male'"
+                       [(ngModel)]="detailedHero.gender"
+                       [disabled]="isShowing"
+                       name="heroGender"> Male
               </label>
               <label class="btn btn-primary">
-                <input type="radio" [value]="'Female'"> Female
+                <input type="radio"
+                       [value]="'Female'"
+                       [(ngModel)]="detailedHero.gender"
+                       [disabled]="isShowing"
+                       name="heroGender"> Female
               </label>
             </div>
           </div>
