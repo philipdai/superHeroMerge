@@ -64,14 +64,7 @@ export class HeroService {
   }
 
   updateHero(updatedHero: Hero): Observable<any> {
-    return this.http.patch("https://hero-merge.herokuapp.com/" + this.apiKey + "/heroes/" + updatedHero.id, {
-      hero_name: updatedHero.hero_name,
-      real_name: updatedHero.real_name,
-      gender: updatedHero.gender,
-      attributes: updatedHero.attributes,
-      powers: updatedHero.powers,
-      weaknesses: updatedHero.weaknesses
-    });
+    return this.http.patch("https://hero-merge.herokuapp.com/" + this.apiKey + "/heroes/" + updatedHero.id, updatedHero);
   }
 
 
