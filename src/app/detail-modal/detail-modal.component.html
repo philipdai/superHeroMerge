@@ -65,7 +65,7 @@
           <div class="form-group" *ngIf="detailedHero.powers.length > 0 && (isEditing || isShowing)">
             <label>Powers: </label>
             <input class="tag tag-success mr-1"
-                   *ngFor="let power of detailedHero.powers; let i = index;"
+                   *ngFor="let power of detailedHero.powers; let i = index; trackBy: customTrackBy"
                    name="power-{{i}}"
                    type="text" [(ngModel)]="detailedHero.powers[i]"
                    [disabled]="isShowing"/>
@@ -74,7 +74,7 @@
           <div class="form-group" *ngIf="detailedHero.weaknesses.length > 0 && (isEditing || isShowing)">
             <label>Weaknesses: </label>
             <input class="tag tag-danger mr-1"
-                   *ngFor="let weakness of detailedHero.weaknesses; let i = index;"
+                   *ngFor="let weakness of detailedHero.weaknesses; let i = index; trackBy: customTrackBy"
                    name="weakness-{{i}}"
                    type="text" [(ngModel)]="detailedHero.weaknesses[i]"
                    [disabled]="isShowing"/>
