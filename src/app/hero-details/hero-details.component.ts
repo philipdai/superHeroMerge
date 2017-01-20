@@ -5,7 +5,7 @@ import {Hero} from "../models/hero.model";
   selector: 'hero-details',
   templateUrl: './hero-details.component.html',
   styleUrls: ['./hero-details.component.css'],
-  outputs: ['onToggledHero', 'onCancel']
+  outputs: ['onToggledHero', 'onCancel', 'onUpdateHero']
 })
 export class HeroDetailsComponent implements OnInit {
   @Input() hero: Hero;
@@ -16,10 +16,12 @@ export class HeroDetailsComponent implements OnInit {
   selectedHero: Hero = null;
   onToggledHero: EventEmitter<Hero>;
   onCancel: EventEmitter<boolean>;
+  onUpdateHero: EventEmitter<Hero>;
 
   constructor() {
     this.onToggledHero = new EventEmitter();
     this.onCancel = new EventEmitter();
+    this.onUpdateHero = new EventEmitter();
   }
 
   ngOnInit() {
@@ -51,6 +53,10 @@ export class HeroDetailsComponent implements OnInit {
     this.isShowHero = false;
     this.isEditHero = false;
     this.onCancel.emit(false);
+  }
+
+  updateHero(event) {
+    this.onUpdateHero.emit(event);
   }
 
   onSubmit() {}

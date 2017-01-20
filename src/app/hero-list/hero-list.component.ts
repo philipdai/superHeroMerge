@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../models/hero.model';
 import {HeroService} from "../services/hero.service";
+declare let $;
 
 @Component({
   selector: 'hero-list',
@@ -73,6 +74,12 @@ export class HeroListComponent implements OnInit {
     let newHero: Hero = event;
     delete newHero.selected;
     this.heroService.createHero(newHero).subscribe(data => {
+      this.getHeroList();
+    });
+  }
+
+  updateHero(event: Hero) {
+    this.heroService.updateHero(event).subscribe(data => {
       this.getHeroList();
     });
   }

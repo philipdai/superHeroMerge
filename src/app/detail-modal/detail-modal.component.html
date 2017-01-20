@@ -87,7 +87,7 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal"
                 (click)="cancel();">{{isShowing? 'Close': 'Cancel'}}</button>
         <button type="submit" class="btn btn-primary"
-                (click)="createHero(hero);"
+                (click)="updateHero(hero);"
                 [disabled]="!heroDetailForm.form.valid"
                 data-dismiss="modal"
                 *ngIf="isEditing">Update Hero</button>

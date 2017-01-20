@@ -3,6 +3,7 @@
                 [hero]="hero" [i]="i"
                 [mergingList]="selectedToMergeHeroes"
                 (onToggledHero)="updateHeroList($event)"
+                (onUpdateHero)="updateHero($event)"
                 (onCancel)="getHeroList()"></hero-details>
 
   <merging-modal *ngIf="isShowMergingModal" [mergingList]="selectedToMergeHeroes"

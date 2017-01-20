@@ -22,4 +22,5 @@
               [detailedHero]="selectedHero"
               [isShowing]="isShowHero"
               [isEditing]="isEditHero"
+              (onUpdateHero)="updateHero($event)"
               (onCancel)="cancelInitialDetailModal()"></detail-modal>

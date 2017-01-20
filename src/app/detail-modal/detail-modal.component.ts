@@ -5,7 +5,7 @@ declare let _;
   selector: 'detail-modal',
   templateUrl: './detail-modal.component.html',
   styleUrls: ['./detail-modal.component.css'],
-  outputs: ['onCancel']
+  outputs: ['onCancel', 'onUpdateHero']
 })
 export class DetailModalComponent implements OnInit {
   @Input() detailedHero: Hero;
@@ -13,12 +13,12 @@ export class DetailModalComponent implements OnInit {
   @Input() isEditing: boolean = false;
   @Input() isMerging: boolean = false;
 
-  onCreateHero: EventEmitter<Hero>;
+  onUpdateHero: EventEmitter<Hero>;
   onCancel: EventEmitter<boolean>;
   submitted: boolean = false;
 
   constructor() {
-    this.onCreateHero = new EventEmitter();
+    this.onUpdateHero = new EventEmitter();
     this.onCancel = new EventEmitter();
     this.isShowing = false;
     this.isEditing = false;
@@ -40,8 +40,11 @@ export class DetailModalComponent implements OnInit {
     this.onCancel.emit(false);
   }
 
-  createHero(hero: Hero) {
-
+  updateHero() {
+    this.isShowing = false;
+    this.isEditing = false;
+    this.submitted = true;
+    this.onUpdateHero.emit(this.detailedHero);
   }
 
   onSubmit() {
